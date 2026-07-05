@@ -1,0 +1,25 @@
+/* Global resets. Component-scoped styles handle the rest. */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #f9fafb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Shared loading-card pulse. Used by the editor and view's loading
+   states to indicate the page is actively loading (rather than stuck
+   on a blank screen). Component-scoped styles still own the card's
+   shape/shadow — this keyframe is the only piece that needs to be
+   global since it's identical in both places. */
+@keyframes loading-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.7; transform: scale(0.98); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loading-card { animation: none !important; }
+}

@@ -1,0 +1,22 @@
+<header class="topbar">
+  <a routerLink="/" class="brand">{{ title }}</a>
+  <nav>
+    @if (auth.isAuthenticated()) {
+      <a
+        routerLink="/app"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >Dashboard</a>
+      <a routerLink="/app/new" routerLinkActive="active">New</a>
+      <span class="user">{{ userLabel() }}</span>
+      <button type="button" (click)="signOut()">Sign out</button>
+    } @else {
+      <a routerLink="/login" routerLinkActive="active">Sign in</a>
+      <a routerLink="/signup" routerLinkActive="active">Sign up</a>
+    }
+  </nav>
+</header>
+
+<main>
+  <router-outlet />
+</main>

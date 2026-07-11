@@ -105,6 +105,7 @@ function livePageCount(html: string): number {
   return ((html.match(PAGE_REGEX) ?? []).length) + 1;
 }
 
+
 @Component({
   selector: 'app-essay-edit',
   standalone: true,
@@ -308,7 +309,7 @@ function livePageCount(html: string): number {
           @if (showRuler()) {
             <!--
               Ruler. The 1–7 tick marks roughly match the 1″-margin geometry
-              of a US Letter page (816px wide). The outer ticks (white margin)
+              of an A4 page (794px wide). The outer ticks (white margin)
               are intentionally slightly longer than the inner ticks (white
               inside the page) to evoke the "margin gutter" look from Word.
               Toggled via View > Show Ruler.
@@ -422,7 +423,7 @@ function livePageCount(html: string): number {
 
       /* ---- Header (question, status, last-saved) ---- */
       .edit-header {
-        max-width: 816px;
+        max-width: 794px;
         margin: 0 auto 1.25rem;
         padding-bottom: 1.75rem;
       }
@@ -514,8 +515,7 @@ function livePageCount(html: string): number {
          and the ruler. Previously these were three independent sticky
          elements with three borders and three shadows, which read as
          three competing surfaces. The container pins below the 56-px
-         topbar; the inner rows are relative-positioned so they scroll
-         with the container. max-width: 816 so the chrome's left edge
+         topbar; the inner rows are relative-positioned so they scroll          with the container.
          aligns with the paper's left edge. */
       .chrome {
         position: sticky;
@@ -530,7 +530,7 @@ function livePageCount(html: string): number {
       .chrome-row {
         position: relative;
       }
-.chrome-row-ruler{max-width:816px;margin:0 auto}
+.chrome-row-ruler{max-width:794px;margin:0 auto}
       .chrome-row + .chrome-row {
         border-top: 1px solid #e5e7eb;
       }
@@ -632,8 +632,7 @@ function livePageCount(html: string): number {
          96px side padding matches the paper's 1" left/right margin, so
          the tick marks sit exactly above the page area. */
       .ruler {
-        height: 24px;
-        max-width: 816px;
+        height: 24px;         max-width: 794px;
         margin: 0 auto;
         padding: 0 96px;
         display: flex;
@@ -672,13 +671,13 @@ function livePageCount(html: string): number {
 
       /* ---- Workspace (paper) ---- */
       .workspace {
-        max-width: 816px;
+        max-width: 794px;
         margin: 0 auto;
       }
 
       /* ---- Paper ---- */
       .editor-frame {
-        max-width: 816px;
+        max-width: 794px;
         background: #ffffff;
         box-shadow:
           0 2px 8px rgba(0, 0, 0, 0.05),
@@ -703,11 +702,16 @@ function livePageCount(html: string): number {
       }
       .editor-host ::ng-deep .ck-toolbar { display: none !important; }
       .editor-host ::ng-deep .ck-editor__editable {
-        min-height: 60vh;
+        min-height: 1123px;
         padding: 96px;
         line-height: 1.65;
         font-size: 1rem;
-        background: #ffffff;
+        background:
+          linear-gradient(#e5e7eb 1px, transparent 1px),
+          #ffffff;
+        background-size: 100% 1151px;
+        background-position: 0 1123px;
+        background-repeat: repeat-y;
         font-family: 'Calibri', 'Inter', system-ui, sans-serif;
         color: #1f2937;
       }
@@ -736,15 +740,13 @@ function livePageCount(html: string): number {
       .editor-host ::ng-deep .ck-content div[style*='page-break-before'] {
         break-after: page;
         page-break-after: always;
-        margin: 1rem -96px;
-        padding: 1rem 96px;
+        margin: 0 -96px;
+        padding: 28px 96px;
         background: #f3f4f6;
         position: relative;
+        border-top: 1px dashed #d1d5db;
+        border-bottom: 1px dashed #d1d5db;
       }
-      .editor-host ::ng-deep
-        .ck-content div[style*='page-break-after']::before,
-      .editor-host ::ng-deep
-        .ck-content div[style*='page-break-before']::before { display: none; }
 
       /* ---- Status bar ---- */
       .status-bar {
@@ -880,7 +882,7 @@ function livePageCount(html: string): number {
         .editor-host ::ng-deep .ck-content div[style*='page-break-after'],
         .editor-host ::ng-deep .ck-content div[style*='page-break-before'] {
           margin: 1rem -16px;
-          padding: 1rem 16px;
+          padding: 16px 16px;
         }
         .status-bar { padding: 0.4rem 0.85rem; font-size: 0.7rem; }
         .status-bar-left, .status-bar-right { gap: 0.5rem; }

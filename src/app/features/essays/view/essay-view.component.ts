@@ -305,8 +305,8 @@ function relativeTime(iso: string): string {
       .answer div[style*='page-break-before'] {
         break-after: page;
         page-break-after: always;
-        margin: 1rem -96px;
-        padding: 1rem 96px;
+        margin: 0 -96px;
+        padding: 96px;
         background: #f3f4f6;
         position: relative;
       }
@@ -398,8 +398,8 @@ function relativeTime(iso: string): string {
         }
         .answer div[style*='page-break-after'],
         .answer div[style*='page-break-before'] {
-          margin: 1rem -16px;
-          padding: 1rem 16px;
+          margin: 0 -16px;
+          padding: 16px;
         }
         .status-bar { padding: 0.4rem 0.85rem; font-size: 0.7rem; }
         .status-bar-left, .status-bar-right { gap: 0.5rem; }

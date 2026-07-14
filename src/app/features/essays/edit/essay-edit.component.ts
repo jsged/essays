@@ -741,7 +741,7 @@ function livePageCount(html: string): number {
         break-after: page;
         page-break-after: always;
         margin: 0 -96px;
-        padding: 28px 96px;
+        padding: 96px;
         background: #f3f4f6;
         position: relative;
         border-top: 1px dashed #d1d5db;
@@ -881,8 +881,8 @@ function livePageCount(html: string): number {
         }
         .editor-host ::ng-deep .ck-content div[style*='page-break-after'],
         .editor-host ::ng-deep .ck-content div[style*='page-break-before'] {
-          margin: 1rem -16px;
-          padding: 16px 16px;
+          margin: 0 -16px;
+          padding: 16px;
         }
         .status-bar { padding: 0.4rem 0.85rem; font-size: 0.7rem; }
         .status-bar-left, .status-bar-right { gap: 0.5rem; }
